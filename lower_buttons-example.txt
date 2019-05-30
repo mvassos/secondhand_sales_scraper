@@ -1,0 +1,24 @@
+<div class="paginator buttongroup firstpage">
+<span class="resulttotal">
+<span class="for-map">
+        displaying <span class="displaycountShow">...</span> postings
+        </span>
+</span>
+<span class="buttons">
+<a class="button first" href="/search/sya?query=gaming%20pc&amp;sort=date" title="first page">&lt;&lt;</a>
+<span class="button first" title="first page">&lt;&lt;</span>
+<a class="button prev" href="/search/sya?query=gaming%20pc&amp;sort=date" title="previous page">&lt; prev</a>
+<span class="button prev" title="previous page">&lt; prev</span>
+<span class="button pagenum">
+<span class="range">
+<span class="rangeFrom">1</span>
+                -
+                <span class="rangeTo">120</span>
+</span>
+            /
+            <span class="totalcount">136</span>
+</span>
+<a class="button next" href="/search/sya?s=120&amp;query=gaming%20pc&amp;sort=date" title="next page">next &gt; </a>
+<span class="button next" title="next page"> next &gt; </span>
+</span>
+</div>

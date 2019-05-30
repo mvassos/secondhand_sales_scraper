@@ -1,0 +1,28 @@
+<li class="result-row" data-pid="6867368458">
+<a class="result-image gallery" data-ids="1:00T0T_9Rc0DtmsD29,1:00I0I_bp4HnIhvYMl,1:00s0s_5cRuVAFTLqW" href="https://sfbay.craigslist.org/nby/sys/d/santa-rosa-insane-gaming-pc-read-de-ion/6867368458.html">
+<span class="result-price">$1800</span>
+</a>
+<p class="result-info">
+<span class="icon icon-star" role="button">
+<span class="screen-reader-text">favorite this post</span>
+</span>
+<time class="result-date" datetime="2019-04-15 17:06" title="Mon 15 Apr 05:06:48 PM">Apr 15</time>
+<a class="result-title hdrlnk" data-id="6867368458" href="https://sfbay.craigslist.org/nby/sys/d/santa-rosa-insane-gaming-pc-read-de-ion/6867368458.html">INSANE GAMING PC! READ DESCRIPTION</a>
+<span class="result-meta">
+<span class="result-price">$1800</span>
+<span class="result-hood"> (santa rosa)</span>
+<span class="result-tags">
+                    pic
+                    <span class="maptag" data-pid="6867368458">map</span>
+</span>
+<span class="banish icon icon-trash" role="button">
+<span class="screen-reader-text">hide this posting</span>
+</span>
+<span aria-hidden="true" class="unbanish icon icon-trash red" role="button"></span>
+<a class="restore-link" href="#">
+<span class="restore-narrow-text">restore</span>
+<span class="restore-wide-text">restore this posting</span>
+</a>
+</span>
+</p>
+</li>
