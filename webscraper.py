@@ -1,5 +1,7 @@
 # Created by Manny Vassos
 import urllib.request as urlReq
+import pandas as pd
+import numpy as np
 from bs4 import BeautifulSoup as soup
 import re
 
@@ -56,6 +58,10 @@ def get_results_info(results, search):
     count = len(results)
     print("found", count, " results")
 
+    #arrays initialized for refference
+    prices = []
+    titles = []
+
     price_sum = 0
 
     for result in results:
@@ -79,26 +85,38 @@ def get_results_info(results, search):
             else:
                 price_sum += price
 
-            print("\n" + title)
-            print("$" + str(price))
+            #print("\n" + title)
+            titles.append(title)
+
+            #print("$" + str(price))
+            prices.append(price)
         else:
             count -= 1
+
+    #using (prices, titles) so that the prices are the data points
+    data_frame = pd.DataFrame(prices, titles, ["price"])
+    print(data_frame)
 
     price_avg = round(price_sum / count, 2)
     print("\nAverage price for your selection: $" + str(price_avg), "from", count, "results!")
 
 
-def main():
-    #url_start = input("Enter a Craigslist search url:\n")
+def generate_craigs_list_url(user_search):
+    #maybe implement later to generate specific site urls based on new vauge searches
+    pass
 
-    url_start = 'https://sfbay.craigslist.org/search/cta?query=2000+dodge+cummins'
+
+def main():
+    #user_search = input("Enter some search terms:\n")
+
+    url_start = 'https://sfbay.craigslist.org/search/sss?query=game+boy+mario'
 
     #find exact seach phrase
     eq_index = str(url_start).find('=') + 1
     query_raw = str(url_start)[eq_index:len(str(url_start))]
     query_list = query_raw.split('+')
-    print("You searched for", query_raw)
-    print(query_list)
+    query_string = " ".join(query_list)
+    print("You searched for:", query_string)
 
 
     # isolate the base of the url to modify later (add new endings)
