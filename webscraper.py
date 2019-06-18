@@ -61,13 +61,16 @@ def get_results_info(results, search):
     #arrays initialized for refference
     prices = []
     titles = []
+    urls = []
 
     price_sum = 0
 
     for result in results:
+        #print(result)
         # begin parsing with soup information for each result
         price = (result.find("span", {"result-price"})).text
         title = (result.p.a).text.lower()
+        url = (result.a.attrs['href'])
         title_list = title.split(' ')
 
         #remove results that dont have query words in the title
@@ -85,18 +88,21 @@ def get_results_info(results, search):
             else:
                 price_sum += price
 
-            #print("\n" + title)
-            titles.append(title)
+                #print("\n" + title)
+                titles.append(title)
 
-            #print("$" + str(price))
-            prices.append(price)
+                #print("$" + str(price))
+                prices.append(price)
+
+                urls.append(url)
         else:
             count -= 1
 
     #using (prices, titles) so that the prices are the data points
-    data_frame = pd.DataFrame(prices, titles, ["price"])
+    raw_data = {'title': titles, 'price': prices, 'url': urls}
+    data_frame = pd.DataFrame(raw_data, columns=['title', 'price', 'url'])
     print(data_frame)
-
+    data_frame.to_csv('data.csv', encoding='utf-8')
     price_avg = round(price_sum / count, 2)
     print("\nAverage price for your selection: $" + str(price_avg), "from", count, "results!")
 
@@ -109,7 +115,10 @@ def generate_craigs_list_url(user_search):
 def main():
     #user_search = input("Enter some search terms:\n")
 
-    url_start = 'https://sfbay.craigslist.org/search/sss?query=game+boy+mario'
+    test_url = 'https://sfbay.craigslist.org/search/sss?query=game+boy+mario'
+    url_start = input('Enter Start Url: ')
+
+    url_start = test_url
 
     #find exact seach phrase
     eq_index = str(url_start).find('=') + 1
