@@ -54,7 +54,7 @@ def get_all_results(page_soup, url_base):
     return results
 
 
-def get_results_info(results, search):
+def get_results_info(results, search, filename):
     count = len(results)
     print("found", count, " results")
 
@@ -102,7 +102,10 @@ def get_results_info(results, search):
     raw_data = {'title': titles, 'price': prices, 'url': urls}
     data_frame = pd.DataFrame(raw_data, columns=['title', 'price', 'url'])
     print(data_frame)
-    data_frame.to_csv('data.csv', encoding='utf-8')
+
+    with open(filename+'.csv', 'a') as file:
+        data_frame.to_csv(file, header=False)
+
     price_avg = round(price_sum / count, 2)
     print("\nAverage price for your selection: $" + str(price_avg), "from", count, "results!")
 
@@ -112,13 +115,13 @@ def generate_craigs_list_url(user_search):
     pass
 
 
-def main():
+def main(url_start=None):
     #user_search = input("Enter some search terms:\n")
-
     test_url = 'https://sfbay.craigslist.org/search/sss?query=game+boy+mario'
-    url_start = input('Enter Start Url: ')
 
-    url_start = test_url
+    if(url_start == None or url_start == ''):
+        #if no url is specified via automate.py use a generic
+        url_start = test_url
 
     #find exact seach phrase
     eq_index = str(url_start).find('=') + 1
@@ -141,10 +144,12 @@ def main():
 
     # storing html source into a soup type to do parsing
     page_soup = soup(page_html, "html.parser")
+
     # call worker function to get all results from multiple pages
     results = get_all_results(page_soup, url_base)
 
-    get_results_info(results, query_list)
+    # pass in search query with no spaces for filename for csv
+    get_results_info(results, query_list, query_string.replace(" ", ""))
 
 
 if __name__ == '__main__':
